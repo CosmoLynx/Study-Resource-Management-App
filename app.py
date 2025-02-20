@@ -26,8 +26,12 @@ def create_app():
         db.create_all()
         create_initial_data.create_data(user_datastore)
 
+    app.config["WTF_CSRF_CHECK_DEFAULT"] = False
+    app.config['SECURITY_CSRF_PROTECT_MECHANISMS'] = []
+    app.config['SECURITY_CSRF_IGNORE_UNAUTH_ENDPOINTS'] = True
+
     # setup the view
-    views.create_views(app)
+    views.create_views(app,user_datastore)
 
     return app
 

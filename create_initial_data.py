@@ -20,7 +20,7 @@ def create_data(user_datastore : SQLAlchemySessionUserDatastore):
     if not user_datastore.find_user(email = "inst@iitm.ac.in"):
         user_datastore.create_user(email = "inst@iitm.ac.in", password = hash_password("pass"), roles=['inst'])
     if not user_datastore.find_user(email = "stud@iitm.ac.in"):
-        user_datastore.create_user(email = "stud@iitm.ac.in", password = hash_password("pass"), roles=['stud'])
+        user_datastore.create_user(email = "stud@iitm.ac.in", password = hash_password("pass"),active = True, roles=['stud'])
 
 
     db.session.commit()
